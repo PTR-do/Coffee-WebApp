@@ -1,0 +1,46 @@
+===============================================================================================
+        FLUSSO DI SINCRONIZZAZIONE E MONITORAGGIO DISTRIBUTORI (SB <-> JK)
+===============================================================================================
+
++------------------+-----------------------+--------------------------------------------------+
+| ATTUATORE        | EVENTO / AZIONE       | TEMPISTICA (FREQUENZA / TIMEOUT)                 |
++------------------+-----------------------+--------------------------------------------------+
+|                  |                       |                                                  |
+| Browser (JS)     | Polling di Stato      | Ogni 3 Secondi (setInterval)                     |
+|                  |                       |                                                  |
+| Browser (JS)     | Heartbeat (Jakarta)   | Ogni 5 Minuti (setInterval)                      |
+|                  |                       |                                                  |
+| Spring Boot (SB) | Sync Outbound (->JK)  | Ogni Ora esatta (Cron: "0 0 * * * *")            |
+|                  |                       |                                                  |
+| Jakarta EE (JK)  | Health Check (Watch)  | Ogni Ora (Partenza immediata all'avvio)          |
+|                  |                       |                                                  |
+| Jakarta EE (JK)  | Report Inbound (->SB) | Ogni Ora al minuto :05 (Scheduled Task)          |
+|                  |                       |                                                  |
+| Jakarta EE (JK)  | Soglia Guasto (DB)    | Inattività > 3 Ore (Threshold su LocalDateTime)  |
+|                  |                       |                                                  |
++------------------+-----------------------+--------------------------------------------------+
+
+NOTE TECNICHE DI IMPLEMENTAZIONE:
+
+1. INTERAZIONE BROWSER (distributor_screen.js):
+   - Il polling verso Spring Boot (pollCall) avviene ogni 3000ms per aggiornare l'UI.
+   - L'Heartbeat verso Jakarta parte una sola volta dopo 300.000ms dal caricamento.
+
+2. GESTIONE SESSIONE CONSUMATORE (ConnectionService.java):
+   - Al momento della connessione, viene programmata una disconnessione automatica (performAutoDisconnect)
+     esattamente dopo 60.000ms (1 minuto).
+
+3. SINCRONIZZAZIONE ANAGRAFICA (SynchronizationClient.java):
+   - Spring Boot invia la lista dei nuovi distributori o di quelli rimossi a Jakarta ogni ora
+     scoccata (es. 10:00, 11:00) tramite cron espressione.
+
+4. MONITORAGGIO SALUTE (ReportStateService.java):
+   - Jakarta scansiona il database MongoDB ogni ora (TimeUnit.HOURS).
+   - Un distributore è marcato 'guasto' se d.getTime() è antecedente a 3 ore rispetto a 'ora'.
+
+5. REPORTISTICA VERSO IL MASTER (ReportClient.java):
+   - Il task viene schedulato ogni 60 minuti.
+   - L'invio è ritardato (delayTime) per colpire sempre il minuto 5 di ogni ora (es. 10:05, 11:05),
+     evitando collisioni con il task di sincronizzazione di Spring Boot.
+
+==================================================================================================
