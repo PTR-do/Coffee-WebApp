@@ -4,7 +4,6 @@ Web application for a distributed coffee vending infrastructure.
 
 The project is designed as a software architecture and distributed-systems project, with  attention to separation of concerns, modularity, communication between components and maintainability.
 
-<br>
 
 ---
 # Architecture
