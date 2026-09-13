@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espresso - Client Home</title>
+    <link rel="stylesheet" th:href="@{/css/consumer_home.css}">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script th:src="@{/js/consumer_home.js}" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">ESPRESSO</h1>
+
+        <section class="user-section">
+            <div class="username" id="username-field" th:text="${username}">Nome Utente</div>
+        </section>
+
+        <section class="credit-section">
+            <div class="user-credit">Credito residuo:
+               <div id="credit" th:text="'€' + ${credit}">€0,00</div>
+           </div>
+           <button id="credit-btn" >Ricarica</button>
+         </section>
+
+        <section class="connection-section">
+            <label for="distributor-id">ID distributore</label>
+            <input type="text" id="distributor-id" placeholder=" Inserisci ID distributore">
+
+            <label for="connection-code">Codice </label>
+            <input type="text" id="connection-code" placeholder=" Inserisci codice casuale">
+
+             <div class="connection">
+                 <button class="btn" id="connect-btn">Collegati</button>
+                 <div class="state" id="state">Al momento non connesso</div>
+                 <button class="btn" id="disconnect-btn">Scollegati</button>
+                 <a th:href="@{/consumer/access/map}" class="show-distributor">Mostra distributori nelle vicinanze</a>
+            </div>
+
+        </section>
+
+    </div>
+
+    <!-- Overlay messages -->
+    <div id="overlay-error" class="overlay hidden">
+        <div class="overlay-box">Errore di connessione.</div>
+    </div>
+    <div id="overlay-success" class="overlay hidden">
+        <div class="overlay-box">Operazione effettuata con successo!</div>
+    </div>
+
+    <!-- Overlay recharge -->
+    <div id="overlay-recharge" class="overlay hidden">
+        <div class="dialog-box">
+            <div class="amounts">
+                <label class="amount">
+                    <input type="radio" name="recharge-amount" class="amount-checkbox" value="5">
+                    5€
+                </label>
+                <label class="amount">
+                    <input type="radio" name="recharge-amount" class="amount-checkbox" value="10">
+                    10€
+                </label>
+                <label class="amount">
+                    <input type="radio" name="recharge-amount" class="amount-checkbox" value="20">
+                    20€
+                </label>
+                <label class="amount">
+                    <input type="radio" name="recharge-amount" class="amount-checkbox" value="50">
+                    50€
+                </label>
+                <label class="amount">
+                    <input type="radio" name="recharge-amount" class="amount-checkbox" value="100">
+                    100€
+                </label>
+            </div>
+            <div class="dialog-actions">
+                <button id="confirm-recharge">Conferma</button>
+                <button id="cancel-recharge">Annulla</button>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
+

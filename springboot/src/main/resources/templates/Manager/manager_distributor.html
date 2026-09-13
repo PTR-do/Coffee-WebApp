@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Espresso - Gestione Distributori</title>
+    <link rel="stylesheet" th:href="@{/css/manager_distributor.css}">
+    <!--map-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <!-- -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script th:src="@{/js/manager_distributor.js}" defer></script>
+</head>
+<body>
+<div class="container">
+    <h1 class="title">Gestione Distributori</h1>
+
+    <div class="row">
+            <div class="column">
+                <div class="add-box">
+                    <div class="map-container">
+                        <h2>Aggiungi nuovo distributore</h2>
+                        <form id="add-distributor-form">
+                            <label for="add-dist-location">Locazione</label>
+                            <input id="add-dist-location" type="text" placeholder="Es. Aula 300, Edificio 8, Viale delle scienze, Palermo">
+
+                            <label for="add-dist-date">Data di installazione</label>
+                            <input id="add-dist-date" type="date">
+
+                            <label for="add-dist-status">Stato di attività</label>
+                            <div class="select-wrapper">
+                                <select id="add-dist-status">
+                                    <option value="attivo">Attivo</option>
+                                    <option value="non_attivo">Non Attivo</option>
+                                    <option value="in_manutenzione">In manutenzione</option>
+                                    <option value="guasto">Guasto</option>
+                                </select>
+                            </div>
+
+                            <div class="lat-lng">Seleziona la posizione nella mappa</div>
+                            <div class="pos">
+                                <span class="coord" id="lat">Lat: </span>
+                                <span class="coord" id="lng">Lng: </span>
+                            </div>
+
+                        <button type="submit" class="btn primary">Aggiungi</button>
+                        </form>
+                    </div>
+                    <div class="map-container">
+                        <div id="map"></div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <h2>Attiva distributore</h2>
+            <form id="activate-form">
+                <label for="activate-id">ID distributore</label>
+                <input id="activate-id" type="text" placeholder="Es. 123">
+                <button type="submit" class="btn primary">Attiva</button>
+            </form>
+        </div>
+
+        <div class="column">
+            <h2>Disattiva distributore</h2>
+            <form id="deactivate-form">
+                <label for="deactivate-id">ID distributore</label>
+                <input id="deactivate-id" type="text" placeholder="Es. 123">
+                <span>
+                    <input type="radio" id="status-maintenance" name="distributor-status" value="in_manutenzione">
+                    <label for="status-maintenance">In manutenzione</label>
+                </span>
+                <span>
+                    <input type="radio" id="status-inactive" name="distributor-status" value="non_attivo">
+                    <label for="status-inactive">Non attivo</label>
+                </span>
+                <span>
+                    <input type="radio" id="status-break" name="distributor-status" value="guasto">
+                    <label for="status-break">Guasto</label>
+                </span>
+                <button type="submit" class="btn danger">Disattiva</button>
+            </form>
+        </div>
+
+        <div class="column">
+            <h2>Rimuovi distributore</h2>
+            <form id="remove-form">
+                <label for="remove-id">ID distributore</label>
+                <input id="remove-id" type="text" placeholder="Es. 123">
+                <button type="submit" class="btn danger">Rimuovi</button>
+            </form>
+        </div>
+    </div>
+
+    <section class="search-section" >
+        <h2 id="search-dist-title">Cerca distributori installati</h2>
+
+        <div class="search-controls">
+            <label for="search-filter">Modalità di ricerca</label>
+            <div class="select-wrapper-search">
+                <select id="search-filter" >
+                    <option value="id">Per ID</option>
+                    <option value="locazione">Per Locazione</option>
+                    <option value="data">Per Data di installazione</option>
+                    <option value="all">Mostra tutti</option>
+                </select>
+            </div>
+
+            <label for="search-input-dist" class="search-input-label">Campo di ricerca</label>
+            <p class="search-desc">
+                La modalità di ricerca "Mostra tutti" rimuove i filtri di ricerca.
+            </p>
+            <input id="search-input-dist" type="text" placeholder="Inserisci ID, locazione o data (YYYY-MM-DD)">
+
+            <div class="search-results">
+                <button id="search-btn" type="button" class="btn">Aggiorna risultati di ricerca</button>
+                <button id="cancel-btn" type="button" class="btn">Nascondi risultati di ricerca</button>
+            </div>
+        </div>
+
+        <div class="results" >
+            <table id="results-table-dist" class="results-table" hidden>
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Locazione</th>
+                    <th scope="col">Data di installazione</th>
+                    <th scope="col">Stato di attività</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- righe inserite dinamicamente -->
+                </tbody>
+            </table>
+
+            <p id="no-results-dist" class="no-results" hidden>Nessun risultato.</p>
+        </div>
+    </section>
+
+    <div class="back-section">
+        <a th:href="@{/manager/access/return}" class="btn back-btn">Indietro</a>
+    </div>
+
+    <!-- overlay -->
+    <div id="backend-overlay-layer">
+        <div class="backend-overlay-panel">
+            <div class="backend-overlay-message"></div>
+            <button type="button" class="overlay-close">Chiudi</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+

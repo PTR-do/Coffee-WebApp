@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Espresso - Distributore</title>
+    <link rel="stylesheet" th:href="@{/css/distributor_screen.css}" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script th:src="@{/js/distributor_screen.js}" defer></script>
+</head>
+
+<body>
+<div class="page-container">
+    <section class="title-section">
+        <h1 class="title">ESPRESSO</h1>
+    </section>
+
+    <!-- Sezione superiore: div di connessione e info utente -->
+    <section class="top-section">
+            <div class="connect-card" id="connect-card">
+                <h2>Collegamento al distributore: <span id="id-distributor" th:text="${distributorId}">id distributor</span></h2>
+                <div class="connect-body">
+                    <p class="connect-note">Codice: </p>
+                    <div class="machine-code" id="machine-code">—</div>
+                </div>
+            </div>
+
+            <div class="user-card" id="user-card">
+                <div class="user-body">
+                    <h3 class="user-name">Nome Utente</h3>
+                    <p class="user-credit">Credito residuo: €<span id="user-credit">0,00</span></p>
+                    <p class="user-time">Tempo residuo: <span id="user-time">1:00</span></p>
+                </div>
+            </div>
+    </section>
+
+    <!-- Sezione bevande -->
+    <section class="drinks-section">
+        <div class="drink-group">
+            <h3 class="group-title">Classici</h3>
+            <div class="group-items">
+                <article class="drink-item">
+                    <h4>Espresso - <span class="price">€0,60</span></h4>
+                    <p class="drink-desc">Classico, breve, intenso.</p>
+                    <button class="btn select">Seleziona</button>
+                </article>
+                <article class="drink-item">
+                    <h4>Lungo - <span class="price">€0,60</span></h4>
+                    <p class="drink-desc">Dal gusto meno intenso dell'espresso.</p>
+                    <button class="btn select">Seleziona</button>
+                </article>
+            </div>
+        </div>
+
+        <div class="drink-group">
+            <h3 class="group-title">Macchiato</h3>
+            <div class="group-items">
+                <article class="drink-item">
+                    <h4>Cappuccino - <span class="price">€0,80</span></h4>
+                    <p class="drink-desc">Espresso, latte schiumato.</p>
+                    <button class="btn select">Seleziona</button>
+                </article>
+                <article class="drink-item">
+                    <h4>Latte Macchiato - <span class="price">€0,80</span></h4>
+                    <p class="drink-desc">Latte con un tocco di espresso.</p>
+                    <button class="btn select">Seleziona</button>
+                </article>
+            </div>
+        </div>
+
+        <div class="drink-group">
+            <h3 class="group-title">Aromatizzato</h3>
+            <div class="group-items">
+                <article class="drink-item">
+                    <h4>Ginseng - <span class="price">€0,80</span></h4>
+                    <p class="drink-desc">A base di estratto di ginseng.</p>
+                    <button class="btn select">Seleziona</button>
+                </article>
+                <article class="drink-item">
+                    <h4>Ginseng lungo - <span class="price">€0,80</span></h4>
+                    <p class="drink-desc">Estratto lungo di ginseng.</p>
+                    <button class="btn select">Seleziona</button>
+                </article>
+            </div>
+        </div>
+
+        <div class="drink-group">
+            <h3 class="group-title">Speciali</h3>
+            <div class="group-items">
+                <article class="drink-item">
+                    <h4>Mocha - <span class="price">€1,00</span></h4>
+                    <p class="drink-desc">Espresso con cioccolata.</p>
+                    <button class="btn select">Seleziona</button>
+                </article>
+                <article class="drink-item">
+                    <h4>Vaniglia - <span class="price">€1,00</span></h4>
+                    <p class="drink-desc">Delicato aroma di vaniglia.</p>
+                    <button class="btn select">Seleziona</button>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sezione conferma ordine -->
+    <section class="controls-summary-section">
+        <h2 class="section-title">Riepilogo ordine</h2>
+
+        <p>Bevanda selezionata: <span id="selected-drink">—</span></p>
+        <div class="controls-row">
+            <label for="num-bevande">Numero di bevande</label>
+            <input id="num-bevande" name="num-bevande" type="number" min="1" max="5" value="1">
+        </div>
+        <div class="controls-row">
+            <label for="sugar-level">Quantità zucchero (per bevanda)</label>
+            <select id="sugar-level" name="sugar-level">
+                <option value="0">0 (nessuno)</option>
+                <option value="1">1 cucchiaino</option>
+                <option value="2">2 cucchiaini</option>
+                <option value="3">3 cucchiaini</option>
+            </select>
+        </div>
+
+        <div class="controls-actions">
+            <button class="btn" id="confirm-order">Conferma ordine</button>
+            <button class="btn" id="cancel-order">Annulla</button>
+        </div>
+    </section>
+
+</div>
+</body>
+</html>
+

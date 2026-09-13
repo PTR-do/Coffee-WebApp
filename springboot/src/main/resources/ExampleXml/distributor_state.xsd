@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.data.com/distributor"
+           xmlns="http://www.data.com/distributor"
+           elementFormDefault="qualified">
+
+    <!-- Type for state -->
+    <xs:simpleType name="StateType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="attivo"/>
+            <xs:enumeration value="non_attivo"/>
+            <xs:enumeration value="in_manutenzione"/>
+            <xs:enumeration value="guasto"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Type for error -->
+    <xs:simpleType name="ErrorType">
+        <xs:restriction base="xs:integer">
+            <xs:enumeration value="0"/>
+            <xs:enumeration value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Errors type -->
+    <xs:complexType name="ErrorsType">
+        <xs:sequence>
+            <xs:element name="e1" type="ErrorType"/>
+            <xs:element name="e2" type="ErrorType"/>
+            <xs:element name="e3" type="ErrorType"/>
+            <xs:element name="e4" type="ErrorType"/>
+            <xs:element name="e5" type="ErrorType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Supplies block -->
+    <xs:complexType name="SuppliesType">
+        <xs:sequence>
+            <xs:element name="bicchierini" type="xs:decimal"/>
+            <xs:element name="palettine" type="xs:decimal"/>
+            <xs:element name="acqua" type="xs:decimal"/>
+            <xs:element name="zucchero" type="xs:decimal"/>
+            <xs:element name="caffe" type="xs:decimal"/>
+            <xs:element name="latte" type="xs:decimal"/>
+            <xs:element name="ginseng" type="xs:integer"/>
+            <xs:element name="cioccolata" type="xs:integer"/>
+            <xs:element name="vaniglia" type="xs:integer"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Single distributor structure -->
+    <xs:complexType name="DistributorType">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string"/>
+            <xs:element name="state" type="StateType"/>
+            <xs:element name="stateTime" type="xs:dateTime"/>
+            <xs:element name="updateMaintainer" type="xs:string"/>
+            <xs:element name="errors" type="ErrorsType"/>
+            <xs:element name="supplies" type="SuppliesType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Root element with multiple distributors -->
+    <xs:element name="distributorState">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="distributor" type="DistributorType" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

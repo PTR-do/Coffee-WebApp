@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espresso - Manager Home</title>
+    <link rel="stylesheet" th:href="@{/css/manager_home.css}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1 class="title">Espresso</h1>
+
+
+    <div class="menu">
+        <a th:href="@{/manager/access/handleMaintenance}" class="menu-item">
+            Gestione Manutentori
+        </a>
+        <a th:href="@{/manager/access/handleDistributor}" class="menu-item">
+            Gestione Distributori
+        </a>
+        <a th:href="@{/manager/access/stateDistributor}" class="menu-item">
+            Visualizzazione Stato distributori
+        </a>
+        <a th:href="@{/manager/access/map}" class="menu-item">
+            Visualizzazione posizione distributori
+        </a>
+    </div>
+</div>
+
+</body>
+</html>

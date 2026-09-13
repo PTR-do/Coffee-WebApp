@@ -1,0 +1,249 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url("../images/coffee_beans.avif");
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    padding: 24px;
+    min-height: 100vh;
+}
+
+.page-container {
+    width: 100%;
+    max-width: 800px;
+    background-color: #4a3f3f;
+    border: 1px #4e3a3a solid;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(20, 30, 40, 0.08);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.title-section {
+    background: radial-gradient(circle, #f4e5c8, #816e5c);
+    border-radius: 100px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+.title {
+    font-family: Algerian, serif;
+    font-size: 40px;
+    color: wheat;
+    background-color: #4a3f3f;
+    border-radius: 100px;
+    text-shadow: 1px 2px #373434;
+    padding: 30px 80px;
+}
+
+/* Sezione di connessione */
+.top-section {
+    width: 100%;
+    position: relative;
+    height: 130px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+/* Entrambi i div occupano lo stesso spazio */
+.connect-card,
+.user-card {
+    position: absolute;
+    inset: 0; /* ancorato al padre */
+    padding: 15px 40px;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    overflow: hidden;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.connect-card {
+    background: #a58e76;
+    border: 1px solid rgb(55, 52, 52);
+    z-index: 1;
+}
+.user-card {
+    background: blue;
+    color: #ffffff;
+    border: 1px navajowhite solid;
+    z-index: 0;
+    text-align: right;
+}
+.connect-card h2 {
+    font-size: 16px;
+    color: white;
+    margin-bottom: 6px;
+}
+.connect-body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.connect-note {
+    font-size: 13px;
+    color: white;
+    margin: 0;
+}
+.machine-code {
+    font-family: monospace;
+    font-size: 30px;
+    color: white;
+    width: fit-content;
+    display: inline-block;
+}
+.user-body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    width: 100%;
+}
+.user-name, .user-time {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+}
+.user-credit {
+    font-size: 15px;
+    margin: 0;
+    opacity: 0.95;
+}
+
+/* Selezione bevande */
+.drinks-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.drink-group {
+    background: rgba(99, 89, 80, 0.49);
+    border: 1px solid rgba(255, 222, 173, 0.49);
+    padding: 10px 40px;
+    border-radius: 8px;
+}
+.group-title {
+    font-family: Algerian, serif;
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #f4e5c8;
+    text-align: center;
+}
+.group-items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+.drink-item {
+    background: #503d3d;
+    border-radius: 60px;
+    padding: 10px;
+    border: 1px solid rgb(74, 63, 63);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+}
+.drink-item h4 {
+    font-size: 20px;
+    color: wheat;
+}
+.price{
+    font-size: 18px;
+    color: #b58c56;
+}
+.drink-desc {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.29);
+    margin-bottom: 10px;
+}
+.btn {
+    padding: 6px 10px;
+    border-radius: 40px;
+    border: none;
+    background: wheat;
+    color: #373434;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background-color 0.2s ease;
+}
+.btn:hover {
+    background-color: #503d3d;
+    color: wheat;
+}
+
+/* Controllo ordine */
+.controls-summary-section {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    gap: 12px;
+    padding: 16px 25px;
+    border-radius: 20px;
+    border: 1px solid rgba(0,0,0,0.06);
+    background: #635950;
+}
+.controls-summary-section .section-title {
+    font-family: Algerian, serif;
+    font-size: 20px;
+    color: #f4e5c8;
+    margin-bottom: 6px;
+}
+.controls-summary-section p {
+    width: 50%;
+    font-size: 18px;
+    color: #373434;
+    margin: 4px 0;
+    background-color: #f4e5c8;
+    border-radius: 30px;
+    padding: 8px 0;
+    text-align: center;
+}
+.controls-row {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+.controls-row label {
+    font-size: 14px;
+    color: #f4e5c8;
+}
+.controls-row input,
+.controls-row select {
+    padding: 8px;
+    background-color: #f4e5c8;
+    border-radius: 8px;
+    border: 1px solid rgb(244, 229, 200);
+    color: #635950;
+    width: 140px;
+    font-size: 14px;
+}
+.controls-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 6px;
+}
+.controls-actions .btn {
+    margin-top: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 12px;
+    padding: 8px 13px;
+    font-size: 14px;
+    background: #f4e5c8;
+    color: #4e3a3a;
+    transition: background-color 0.2s ease;
+}
+.controls-actions .btn:hover {
+    background-color: #635950;
+    color: white;
+}

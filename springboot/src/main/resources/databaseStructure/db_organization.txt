@@ -1,0 +1,49 @@
+TABELLE SQL:
+
+credential
+    credential_id PRIMARY KEY
+    id      // coupled unique
+    role    // coupled unique
+    password
+
+maintenance
+	id 	 PRIMARY KEY
+	name
+	location
+	date
+
+users
+	username    PRIMARY KEY
+	email
+	credit
+
+connection
+    idDistributor  PRIMARY KEY
+    code
+    username
+    expires
+
+distributor
+	id	 PRIMARY KEY		
+	location
+	date
+	lat
+	lng
+	notify
+    state
+    stateTime
+    updateMaintainer
+    e1
+    e2
+    e3
+    e4
+    e5
+    bicchierini [pezzi]
+    palettine   [pezzi]
+    acqua       [L]
+    zucchero    [kg]
+    caffe       [kg]
+    latte       [L]
+    ginseng     [ml]
+    cioccolata  [g]
+    vaniglia    [ml]

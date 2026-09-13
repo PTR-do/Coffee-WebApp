@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Espresso - Login</title>
+    <link rel="stylesheet" th:href="@{/css/1_login.css}" />
+</head>
+
+<body>
+<div class="container">
+    <h1 class="title">ESPRESSO</h1>
+    <p>Accedi ad un account</p>
+
+    <form action="/serviceSpringBoot/login/consumer" method="POST" class="login-form">
+        <input type="hidden" name="role" value="user">
+        <div class="input-group">
+            <label for="username">Nome utente</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit" class="btn">Login</button>
+    </form>
+
+    <p class="register-text">
+        Non hai un account?
+        <a th:href="@{/registration}" class="register-link">Registrati</a>
+    </p>
+</div>
+</body>
+
+</html>

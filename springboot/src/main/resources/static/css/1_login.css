@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url("../images/coffee_beans.avif");
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #4a3f3f;
+    padding: 30px 40px;
+    border: 1px #4e3a3a solid;
+    border-radius: 20px;
+    width: 400px;
+    text-align: center;
+}
+
+.title {
+    font-family: Algerian, serif;
+    font-size: 40px;
+    color: wheat;
+    text-shadow: 1px 2px #373434;
+    height: 100px;
+    padding: 10px;
+}
+p {
+    color: white;
+    font-size: 19px;
+    font-weight: 500;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px #373434;
+}
+
+.input-group {
+    text-align: left;
+    margin-bottom: 16px;
+}
+.input-group label {
+    display: block;
+    font-size: 14px;
+    text-shadow: 1px 1px #373434;
+    margin-bottom: 6px;
+    color: wheat;
+}
+.input-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    box-shadow: 0 1px 1px #373434;
+    border-radius: 15px;
+}
+
+.btn {
+    width: 70%;
+    padding: 10px;
+    border: none;
+    border-radius: 15px;
+    background-color: #333;
+    color: white;
+    font-size: 16px;
+    transition: background 0.2s ease;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.btn:hover {
+    background-color: #af926c;
+}
+
+.register-text {
+    margin-top: 12px;
+    font-size: 14px;
+    color: whitesmoke;
+}
+.register-link {
+    color: wheat;
+    text-decoration: underline;
+}
+
+/*style for registration page*/
+.login-text {
+    margin-top: 12px;
+    font-size: 14px;
+    color: whitesmoke;
+}
+.login-link {
+    color: wheat;
+    text-decoration: underline;
+}
+
+/*style for manager page*/
+.manager{
+    font-family: Algerian, serif;
+}

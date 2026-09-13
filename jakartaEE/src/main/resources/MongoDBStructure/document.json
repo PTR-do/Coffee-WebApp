@@ -1,0 +1,10 @@
+{
+  "_id": "distributorID",
+  "state": "distributorStatus",
+  "time": "heartbeat time",
+  "location": "description of location",
+  "coord":{
+    "lat":"lat",
+    "lng":"lng"
+  }
+}

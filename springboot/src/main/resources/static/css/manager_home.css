@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url("../images/coffee_beans.avif");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: rgb(74, 63, 63);
+    border-radius: 15px;
+    text-align: center;
+}
+
+.title {
+    font-family: Algerian, serif;
+    font-size: 40px;
+    color: wheat;
+    text-shadow: 1px 2px #373434;
+
+    background-color: #4a3f3f;
+    border-radius: 50px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 50px;
+    gap: 20px;
+}
+.menu-item {
+    background-color: #4a3f3f;
+    color: #fff;
+    padding: 16px;
+    border-radius: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-decoration: none;
+}
+.menu-item:hover {
+    background-color: #6b4e3d;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.menu-item:active {
+    background-color: #4e3a3a;
+    transform: translateY(0);
+    box-shadow: none;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Espresso - Mappa distributori</title>
+    <link rel="stylesheet" th:href="@{/css/manager_map.css}">
+    <!--map-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <!-- -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script th:src="@{/js/manager_map.js}" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="control-panel">
+            <h2>Legenda</h2>
+            <div class="type">
+                <div class="legend-item">
+                    <div class="square active-color"></div>
+                    <span>Attivo</span>
+                </div>
+                <div class="legend-item">
+                    <div class="square inactive-color"></div>
+                    <span>Non attivo</span>
+                </div>
+                <div class="legend-item">
+                    <div class="square maintenance-color"></div>
+                    <span>In manutenzione</span>
+                </div>
+                <div class="legend-item">
+                    <div class="square break-color"></div>
+                    <span>Guasto</span>
+                </div>
+            </div>
+
+            <div class="back-section">
+                <a th:href="@{/consumer/access/home}" class="btn back-btn">Indietro</a>
+            </div>
+        </div>
+
+        <div id="map"></div>
+    </div>
+</body>
+</html>

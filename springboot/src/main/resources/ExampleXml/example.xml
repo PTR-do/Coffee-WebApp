@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<distributorState
+        xmlns="http://www.data.com/distributor"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.data.com/distributor distributor_state.xsd">
+    <distributor>
+        <id>1</id>
+        <state>in_manutenzione</state>
+        <stateTime>2025-07-19T10:30:20</stateTime>
+        <updateMaintainer>134</updateMaintainer>
+        <errors>
+            <e1>1</e1>
+            <e2>0</e2>
+            <e3>0</e3>
+            <e4>0</e4>
+            <e5>0</e5>
+        </errors>
+        <supplies>
+            <bicchierini>200</bicchierini>
+            <palettine>10</palettine>
+            <acqua>6</acqua>
+            <zucchero>1</zucchero>
+            <caffe>4</caffe>
+            <latte>3</latte>
+            <ginseng>1</ginseng>
+            <cioccolata>400</cioccolata>
+            <vaniglia>500</vaniglia>
+        </supplies>
+    </distributor>
+    <distributor>
+    <id>123</id>
+    <state>attivo</state>
+    <stateTime>2025-10-26T10:30:00</stateTime>
+    <updateMaintainer>1</updateMaintainer>
+    <errors>
+        <e1>0</e1>
+        <e2>0</e2>
+        <e3>1</e3>
+        <e4>0</e4>
+        <e5>0</e5>
+    </errors>
+    <supplies>
+        <bicchierini>130</bicchierini>
+        <palettine>80</palettine>
+        <acqua>5.2</acqua>
+        <zucchero>3.4</zucchero>
+        <caffe>2.8</caffe>
+        <latte>3.6</latte>
+        <ginseng>400</ginseng>
+        <cioccolata>300</cioccolata>
+        <vaniglia>150</vaniglia>
+    </supplies>
+</distributor>
+</distributorState>

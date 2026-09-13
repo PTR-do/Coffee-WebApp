@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Espresso - Gestione Manutentori</title>
+    <link rel="stylesheet" th:href="@{/css/manager_maintenance.css}">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script th:src="@{/js/manager_maintenance.js}" defer></script>
+</head>
+<body>
+<div class="container">
+    <h1 class="title">Gestione personale manutenzione</h1>
+
+    <div class="row">
+        <div class="column">
+            <h2>Aggiungi nuovo manutentore</h2>
+            <form id="add-form">
+                <label for="add-name">Nome</label>
+                <input id="add-name" type="text" placeholder="Es. Mario Rossi">
+
+                <label for="add-location">Luogo di lavoro</label>
+                <input id="add-location" type="text" placeholder="Es. Roma, Lazio">
+
+                <label for="add-startdate">Data di inizio lavoro</label>
+                <input id="add-startdate" type="date">
+
+                <label for="add-password">Password per l'accesso del manutentore</label>
+                <input id="add-password" type="text" placeholder="Es. kGM130_!">
+
+                <button type="submit" class="btn primary">Aggiungi</button>
+            </form>
+        </div>
+
+        <div class="column">
+            <h2>Rimuovi manutentore</h2>
+            <form id="remove-tech-form">
+                <label for="remove-tech-id">ID Manutentore</label>
+                <input id="remove-tech-id" type="text" placeholder="Es. 123">
+                <button type="submit" class="btn danger">Rimuovi</button>
+            </form>
+        </div>
+    </div>
+
+    <section class="search-section">
+        <h2 id="search-title">Cerca manutentori assunti</h2>
+
+        <div class="search-controls">
+            <label for="search-filter">Modalità di ricerca</label>
+            <div class="select-wrapper-search">
+                <select id="search-filter" >
+                    <option value="id">Per ID</option>
+                    <option value="nome">Per Nome</option>
+                    <option value="luogo">Per Luogo di lavoro</option>
+                    <option value="all">Mostra tutti</option>
+                </select>
+            </div>
+
+            <label for="search-input" class="search-input-label">Campo di ricerca</label>
+            <p class="search-desc">
+                La modalità di ricerca "Mostra tutti" rimuove i filtri di ricerca.
+            </p>
+            <input id="search-input" type="text" placeholder="Inserisci ID, nome o luogo" >
+            <div class="search-results">
+                <button id="search-btn" type="button" class="btn">Aggiorna risultati di ricerca</button>
+                <button id="cancel-btn" type="button" class="btn">Nascondi risultati di ricerca</button>
+            </div>
+        </div>
+
+        <div class="results">
+            <table id="results-table" class="results-table" hidden>
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Luogo di lavoro</th>
+                    <th scope="col">Data inizio lavoro</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- righe inserite dinamicamente -->
+                </tbody>
+            </table>
+
+            <p id="no-results" class="no-results" hidden>Nessun risultato.</p>
+        </div>
+    </section>
+
+    <div class="back-section">
+        <a th:href="@{/manager/access/return}" class="btn back-btn">Indietro</a>
+    </div>
+
+    <!-- overlay -->
+    <div id="backend-overlay-layer">
+        <div class="backend-overlay-panel">
+            <div class="backend-overlay-message"></div>
+            <button type="button" class="overlay-close">Chiudi</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

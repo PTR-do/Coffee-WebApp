@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Espresso - Stato Distributore</title>
+    <!--la pagina di stato usa stile e script di maintenance_home-->
+    <link rel="stylesheet" th:href="@{/css/maintenance_home.css}" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script th:src="@{/js/maintenance_home.js}" defer></script>
+</head>
+
+<body>
+<div class="container">
+    <!-- code input -->
+    <header class="code-input">
+        <h1>Controllo stato distributore</h1>
+        <form id="machine-form" action="#" method="post" onsubmit="return false;">
+            <label for="machine-id">Inserisci ID distributore</label>
+            <div class="input-row">
+                <input id="machine-id" name="machine-id" type="text" placeholder="es. 123" />
+                <button id="fetch-btn" class="btn">Carica dati</button>
+            </div>
+            <p class="hint">Inserisci l'ID del distributore e premi "Carica dati" per ricevere lo stato.</p>
+        </form>
+    </header>
+
+    <!-- Stato distributore -->
+    <main class="state-panel" id="state-panel" >
+        <section class="panel-top">
+            <h2 class="panel-title">ID distributore inserito: <span id="panel-machine-id">—</span></h2>
+            <p class="panel-sub">Stato distributore: <span id="panel-state">—</span></p>
+            <p class="panel-sub">Ultimo aggiornamento: <span id="panel-updated">—</span></p>
+            <p class="panel-sub">Aggiornato da: <span id="panel-maintainer">—</span></p>
+        </section>
+
+        <!-- ERRORI -->
+        <section class="errors-section" id="errors-list">
+            <h3 class="section-title">Errori</h3>
+            <div class="error-item critical">
+                <div class="error-title">Blocco meccanico pompa</div>
+                <div class="error-desc">Possibile inceppamento o guasto elettrico.</div>
+                <div class="error-status">
+                    <div class="status-box">
+                        <div class="status-label">Rilevato</div>
+                        <div class="status-badge error-not">No</div>
+                    </div>
+                </div>
+            </div>
+            <div class="error-item high">
+                <div class="error-title">Guasto resistenza scalda-acqua</div>
+                <div class="error-desc">Temperatura non raggiunta per l'erogazione.</div>
+                <div class="error-status">
+                    <div class="status-box">
+                        <div class="status-label">Rilevato</div>
+                        <div class="status-badge error-not">No</div>
+                    </div>
+                </div>
+            </div>
+            <div class="error-item medium">
+                <div class="error-title">Sensore temperatura non affidabile</div>
+                <div class="error-desc">Lettura temperatura instabile; controllo flusso e cablaggi consigliato.</div>
+                <div class="error-status">
+                    <div class="status-box">
+                        <div class="status-label">Rilevato</div>
+                        <div class="status-badge error-not">No</div>
+                    </div>
+                </div>
+            </div>
+            <div class="error-item medium">
+                <div class="error-title">Valvola di miscelazione difettosa</div>
+                <div class="error-desc">Perdita o errata regolazione della valvola che gestisce l'acqua/caffè/latte.</div>
+                <div class="error-status">
+                    <div class="status-box">
+                        <div class="status-label">Rilevato</div>
+                        <div class="status-badge error-not">No</div>
+                    </div>
+                </div>
+            </div>
+            <div class="error-item medium">
+                <div class="error-title">Errore comunicazione interna</div>
+                <div class="error-desc">Modulo periferico non risponde regolarmente.</div>
+                <div class="error-status">
+                    <div class="status-box">
+                        <div class="status-label">Rilevato</div>
+                        <div class="status-badge error-not">No</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FORNITURE -->
+        <section class="supplies-section">
+            <h3 class="section-title">Forniture</h3>
+
+            <div class="supplies-grid">
+                <div class="supply">
+                    <div class="supply-name">Bicchierini</div>
+                    <div class="supply-value"><span id="sup-bicchierini">—</span> pezzi</div>
+                </div>
+                <div class="supply">
+                    <div class="supply-name">Palettine</div>
+                    <div class="supply-value"><span id="sup-palettine">—</span> pezzi</div>
+                </div>
+                <div class="supply">
+                    <div class="supply-name">Acqua</div>
+                    <div class="supply-value"><span id="sup-acqua">—</span> L</div>
+                </div>
+                <div class="supply">
+                    <div class="supply-name">Zucchero</div>
+                    <div class="supply-value"><span id="sup-zucchero">—</span> kg</div>
+                </div>
+                <div class="supply">
+                    <div class="supply-name">Caffè</div>
+                    <div class="supply-value"><span id="sup-caffe">—</span> kg</div>
+                </div>
+                <div class="supply">
+                    <div class="supply-name">Latte</div>
+                    <div class="supply-value"><span id="sup-latte">—</span> L</div>
+                </div>
+                <div class="supply">
+                    <div class="supply-name">Ginseng</div>
+                    <div class="supply-value"><span id="sup-ginseng">—</span> ml</div>
+                </div>
+                <div class="supply">
+                    <div class="supply-name">Cioccolata</div>
+                    <div class="supply-value"><span id="sup-cioccolata">—</span> g</div>
+                </div>
+                <div class="supply">
+                    <div class="supply-name">Vaniglia</div>
+                    <div class="supply-value"><span id="sup-vaniglia">—</span> ml</div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <section class="panel-actions">
+        <a th:href="@{/manager/access/return}" class="btn">Indietro</a>
+    </section>
+
+</div>
+</body>
+</html>

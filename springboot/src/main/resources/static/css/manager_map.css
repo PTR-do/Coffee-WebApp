@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+.control-panel{
+    width: 15%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #a58e76;
+    padding: 20px 30px;
+}
+
+h2{
+    font-size: 36px;
+    color: antiquewhite;
+    margin-bottom: 30px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    color: #f4e5c8;
+    font-size: 20px;
+}
+
+.square{
+    width: 20px;
+    height: 20px;
+    border: 1px solid #f4e5c8;
+    border-radius: 5px;
+}
+.active-color {
+    background-color: blue;
+}
+.inactive-color {
+    background-color: gray;
+}
+.maintenance-color {
+    background-color: yellow;
+}
+.break-color {
+    background-color: red;
+}
+
+.back-section {
+    margin-top: 460px;
+    display: flex;
+}
+.back-btn {
+    padding: 12px 15px;
+    border-radius: 10px;
+    border: none;
+    background: #503d3d;
+    color: #f4e5c8;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    text-decoration: none;
+    font-size: 18px;
+}
+.back-btn:hover {
+    background: #ffffff;
+    color: #a58e76;
+}
+
+#map {
+    flex: 1;
+    width: 100%;
+}
+
+.custom-marker .marker-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+/*bottoni personalizzati*/
+.leaflet-control-zoom {
+    border: none !important;
+    box-shadow: none !important;
+}
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background: #ffffff !important;
+    color: #9f8c6f !important;
+    font-size: 20px !important;
+    width: 50px !important;
+    height: 50px !important;
+    line-height: 30px !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    transition: 0.25s ease;
+}
+.leaflet-control-zoom-in {
+    margin-bottom: 4px !important;
+}
+.leaflet-control-zoom-in:hover,
+.leaflet-control-zoom-out:hover {
+    background: #9f8c6f !important;
+    color: #ffffff !important;
+}
+/* --- */
+.leaflet-container {
+    cursor: default !important;
+}
+.leaflet-dragging .leaflet-container {
+    cursor: default !important;
+}
